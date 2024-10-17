@@ -1,5 +1,6 @@
 require "sinatra"
-
+require "better_errors"
+require "binding_of_caller"
 
 # DICE 2 ROLLS 6 SIDES
 get("/dice/2/6") do
