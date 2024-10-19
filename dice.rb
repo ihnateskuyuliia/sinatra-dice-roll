@@ -13,29 +13,39 @@ end
 
 # DICE 2 ROLLS 6 SIDES
 get("/dice/2/6") do
-  first_die = rand(1..6)
-  second_die = rand(1..6)
-  sum = first_die + second_die
-	
-  @outcome = "You rolled a #{first_die} and a #{second_die} for a total of #{sum}."
-	
+  @rolls = []
+
+  2.times do
+    die = rand(1..6)
+
+    @rolls.push(die)
+  end
+
   erb(:two_six)
 end
 
 # DICE 2 ROLL 10 SIDES
 get("/dice/2/10") do
-    first_die = rand(1..20)
-    second_die = rand(1..20)
-    @outcome = "You rolled a #{first_die} and a #{second_die}."
+    @rolls = []
+
+    2.times do
+      die = rand(1..10)
+
+      @rolls.push(die)
+    end
   
     erb(:two_ten)
 end
 
 # DICE 1 ROLL 20 SIDES
 get("/dice/1/20") do
-  @die = rand(1..20)
+  @rolls = []
 
-  @outcome = "You rolled a #{@die}."
+  1.times do
+    die = rand(1..20)
+
+    @rolls.push(die)
+  end
 
   erb(:one_twenty)
 end
