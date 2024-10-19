@@ -11,15 +11,6 @@ get("/") do
   erb(:home)
 end
 
-
-get("/zebra") do
-  "We must add a route for each path we want to support"
-end
-
-get("/giraffe") do
-  "Hopefully this shows up without having to restart the server 🤞🏾"
-end
-
 # DICE 2 ROLLS 6 SIDES
 get("/dice/2/6") do
   first_die = rand(1..6)
@@ -33,20 +24,20 @@ end
 
 # DICE 2 ROLL 10 SIDES
 get("/dice/2/10") do
-    @die = rand(1..20)
-    @outcome = "You rolled a #{@die}."
+    first_die = rand(1..20)
+    second_die = rand(1..20)
+    @outcome = "You rolled a #{first_die} and a #{second_die}."
   
-    erb(:one_twenty)
+    erb(:two_ten)
 end
 
 # DICE 1 ROLL 20 SIDES
 get("/dice/1/20") do
-  die = rand(1..20)
+  @die = rand(1..20)
 
-  outcome = "You rolled a #{die}."
+  @outcome = "You rolled a #{@die}."
 
-  "<h1>1d20</h1>
-  <p>#{outcome}</p>"
+  erb(:one_twenty)
 end
 
 # DICE 5 ROLLS 4 SIDES
@@ -59,23 +50,7 @@ get("/dice/5/4") do
 
   sum = first_die + second_die + third_die + fourth_die + fifth_die
 
-  outcome = "You rolled a #{first_die}, a #{second_die}, a #{third_die}, a #{fourth_die}, and a #{fifth_die} for a total sum of #{sum}."
+  @outcome = "You rolled a #{first_die}, a #{second_die}, a #{third_die}, a #{fourth_die}, and a #{fifth_die} for a total sum of #{sum}."
 
-  "<h1>5d4</h1>
-  <p>#{outcome}</p>"
-end
-
-
-
-
-get("/dice/100/6") do
-  @rolls = []    # Create a blank array
-
-  100.times do    # 100 times...
-    die = rand(1..6)    # Generate a random number
-
-    @rolls.push(die)    # Add the random number to the array 
-  end
-
-  erb(:one_hundred_six)
+  erb(:five_four)
 end
